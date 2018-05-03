@@ -5,24 +5,30 @@ import { Component } from '@angular/core';
   // templateUrl: './app.component.html',
   template: `
   <h1>{{name}}</h1>
-  <p><i>{{name}} is in the {{region}} region</i></p>
+  <p><i>{{name}} is at {{street}} in {{city}} in the {{region}} region</i></p>
   <br/>
-  <button (click)="addressClick()">Show/Hide Address</button>  
+
+  <fieldset>
+    <label>Name: <input [(ngModel)]="name"/></label><br/>
+  </fieldset>
+
+  <label><input type="checkbox" [(ngModel)]="hideAddress"/> Hide Address</label>
+
   <div [hidden]="hideAddress">
     <fieldset>
-      <label>Street: </label>{{street}}
+      <label>Street: <input [(ngModel)]="street"/></label>
     </fieldset>
     <fieldset>
-      <label>City: </label>{{city}}
+      <label>City: <input [(ngModel)]="city"/></label>
     </fieldset>
     <fieldset>
-      <label>Region:   </label>{{region}}
-      <select (change)="regionChange($event.target.value)">
-        <option>East</option>
-        <option>North</option>
-        <option>South</option>
-        <option>West</option>
-      </select>
+      <label>Region: <select [(ngModel)]="region">
+                      <option>East</option>
+                      <option>North</option>
+                      <option>South</option>
+                      <option>West</option>
+                     </select>
+      </label>
     </fieldset>
   </div>
   `,
@@ -30,18 +36,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   name = 'Alex Smith';
-
   street = '123 Main Street';
   city = 'Los Angeles';
   region = 'East';
   hideAddress = false;
-
-  addressClick() {
-    this.hideAddress = !this.hideAddress;
-  }
-
-  regionChange(region: string) {
-    this.region = region;
-  }
-
 }
