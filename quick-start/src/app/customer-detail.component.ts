@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Customer } from './model';
 
 @Component({
@@ -7,9 +7,20 @@ import { Customer } from './model';
   templateUrl: 'customer-detail.component.html',
 })
 export class CustomerDetailComponent {
+  showAddress = true;
 
   @Input() customer: Customer;
 
-  showAddress = true;
+  @Output() shift  = new EventEmitter<number>();
+
+  right() {
+    this.shift.emit(1);
+  }
+
+  left() {
+    this.shift.emit(-1);
+  }
+
+
 
 }
