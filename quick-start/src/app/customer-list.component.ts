@@ -26,18 +26,25 @@ export class CustomerListComponent implements OnInit {
   getCustomers() {
     this.isBusy = true;
     this.loggerService.log('Getting customers ... ');
+    
     // this.customers = this.dataService.getCustomers();
 
     // this.dataService.getCustomersP()
     //   .then(cust => {
     //     this.isBusy = false;
     //     this.customers = cust;
+    //   }, (errorMsg: string) => {
+    //     this.isBusy = false;
+    //     alert(errorMsg); // TODO: never use alert!
     //   });
 
     this.dataService.getCustomers()
       .subscribe(cust => {
         this.isBusy = false;
         this.customers = cust;
+      }, (errorMsg: string) => {
+        this.isBusy = false;
+        alert(errorMsg); // TODO: never use alert!
       });
   }
 

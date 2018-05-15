@@ -42,3 +42,7 @@ export function createTestCustomers() {
         },
       ];
 }
+
+export function createTestStates() {
+  return ['California', 'Illinois', 'Jalisco', 'Quebec', 'Florida'];
+}

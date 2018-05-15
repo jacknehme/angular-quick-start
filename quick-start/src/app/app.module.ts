@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { DataService } from './data.service';
 import { LoggerService } from './logger.service';
@@ -18,7 +22,10 @@ import { AddressComponent } from './address-comp.component';
     CustomerListComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, 
+    FormsModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [
     DataService,
