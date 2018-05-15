@@ -21,6 +21,4 @@ export class CustomerDetailComponent {
     this.shift.emit(-1);
   }
 
-
-
 }

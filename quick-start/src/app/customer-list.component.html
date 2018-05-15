@@ -2,8 +2,11 @@
 
 <div>
 
-  <!-- list is here -->
-  <p>
+  <!-- Customer list is here -->
+  <p *ngIf="isBusy">
+    <i>Loading Customers</i>
+  </p>
+  <p *ngIf="!isBusy">
     <i>Select a Customer</i>
   </p>
   <ul>
